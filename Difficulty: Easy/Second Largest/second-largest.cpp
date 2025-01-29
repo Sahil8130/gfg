@@ -5,29 +5,34 @@ using namespace std;
 
 
 // } Driver Code Ends
-// User function template for C++
+
+
 class Solution {
   public:
+    // Function returns the second
+    // largest elements
     int getSecondLargest(vector<int> &arr) {
-        int n = arr.size();
-        if (n < 2) {
-            // If the array has less than 2 elements, no second largest exists
-            return -1;
-        }
-
-        int largest = INT_MIN, secondLargest = INT_MIN;
-
-        for (int i = 0; i < n; i++) {
-            if (arr[i] > largest) {
-                secondLargest = largest; // Update second largest
-                largest = arr[i];        // Update largest
-            } else if (arr[i] > secondLargest && arr[i] != largest) {
-                secondLargest = arr[i]; // Update second largest
+       int a=arr.size();
+       int large=INT_MIN;
+        for(int i=0;i<a;i++){
+            if(arr[i]>large){
+                large=arr[i];
             }
         }
-
-        // If no second largest exists, return -1
-        return (secondLargest == INT_MIN) ? -1 : secondLargest;
+        int cnt=0 ;
+        for(int i=1 ; i<a ; i++){
+            if(arr[i]!=arr[i-1]){
+                cnt++;
+            }
+        }
+        int SL=INT_MIN;
+        for(int i=a-1;i>=0;i--){
+            if(arr[i]>SL && arr[i]!=large){
+                SL=arr[i];
+            }
+        }
+        if(cnt==0) {return -1 ;} 
+        else{ return SL;}
     }
 };
 
